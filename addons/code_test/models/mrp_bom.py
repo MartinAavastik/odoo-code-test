@@ -3,9 +3,9 @@
 from odoo import fields
 from odoo import models
 from odoo import api
-class MrpBom(models.Model):
+class add_weight(models.Model):
     _inherit = 'mrp.bom'
-    weight = fields.Float('Weight', compute='calculate_weight', digits='Stock Weight', store=True)
+    weight = fields.Float("Weight", compute='calculate_weight', digits='Stock Weight', store=True)
 
     @api.depends('bom_line_ids.product_qty')
     def calculate_weight(self):
