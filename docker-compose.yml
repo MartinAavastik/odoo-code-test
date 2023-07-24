@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+    odoo:
+        image: odoo:14.0
+        ports:
+            - "8069:8069"
+            - "8072:8072"
+        volumes:
+            - filestore-data:/var/lib/odoo
+            - ./dev.odoo.conf:/etc/odoo/odoo.conf
+            - ./addons:/mnt/extra-addons
+            - ../Odoo-14/avalah-dev:/mnt/avalah-dev
+        stdin_open: true
+        tty: true
+        # restart: unless-stopped
+
+        # command: -d odoo-code-test4 -i code_test --dev xml,reload
+        command: -d odoo-code-test5 -i code_test --dev xml,reload
+
+    db:
+        image: postgres:14
+        # command: ["postgres", "-c", "log_statement=all"]
+        environment:
+          - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-odoo}
+          - POSTGRES_USER=${POSTGRES_USER:-odoo}
+        volumes:
+          - pg-data:/var/lib/postgresql/data
+        restart: unless-stopped
+
+volumes:
+    filestore-data:
+    pg-data:

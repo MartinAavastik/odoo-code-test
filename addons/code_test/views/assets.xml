@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="assets_backend_inherit" inherit_id="web.assets_backend" name="Code Test Assets">
+        <xpath expr="." position="inside">
+            <!-- <script type="text/javascript" src="/code_test/static/src/js/sale_order_date_widget.js"></script> -->
+        </xpath>
+    </template>
+
+</odoo>
